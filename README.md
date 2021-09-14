@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# SEO in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple implemention of SEO in react bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using:
++ [React-Helmet](https://github.com/nfl/react-helmet#readme):  manage changes to the react SPA.
++ [React-Snap](https://github.com/stereobooster/react-snap#readme): pre-renders web app into static html and enabling SEO
+---
+### `React-Helmet`
 
-## Available Scripts
+This package helps to modify the various page headers of our SPA by injecting head tags specified in those pages within the Helmet tags. 
+```
+import { Helmet } from "react-helmet";
 
-In the project directory, you can run:
+<Helmet>
+  <meta charSet="utf-8" />
+  <title>Page Title</title>
+  <link rel="canonical" href="http://mysite.com/home" />
+  <meta name="description" content="description content for this page"/>
+  {/* other head tags to enhance seo */}
+</Helmet>
 
-### `yarn start`
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `React-Snap`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Although google supports crawing javascript application, this further enhances the search optimization of the application by generating static files from our SPA so they are available as html for crawlers. One major advantage of this package is its framework agnostic.
 
-### `yarn test`
+This is applied at the root of our application as below:
+```
+import { Helmet } from "react-helmet";
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<Helmet>
+  <meta charSet="utf-8" />
+  <title>Page Title</title>
+  <link rel="canonical" href="http://mysite.com/home" />
+  <meta name="description" content="description content for this page"/>
+  {/* other head tags to enhance seo */}
+</Helmet>
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
